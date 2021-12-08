@@ -25,7 +25,7 @@ using namespace std;
 class CSerialPort
 {
 private:
-	LPSTR m_portID;
+    LPSTR m_portID;
 	bool m_isSyncRead;
     HANDLE m_hCom;
     OVERLAPPED m_ovWrite;
