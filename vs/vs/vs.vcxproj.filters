@@ -18,18 +18,18 @@
     <ClCompile Include="..\..\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CSerialPort.cpp">
+    <ClCompile Include="..\..\src\CETLCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\CETLCtrl.cpp">
+    <ClCompile Include="..\..\src\CSerialCom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\CSerialPort.h">
+    <ClInclude Include="..\..\src\include\CETLCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\CETLCtrl.h">
+    <ClInclude Include="..\..\src\include\CSerialCom.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

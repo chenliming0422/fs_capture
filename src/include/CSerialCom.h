@@ -1,8 +1,8 @@
 #pragma once
 /***********************************************************************************************
 * Copyright (C), 2021.Purdue University Mechanical Engineering, XTZT Lab, All rights reserved.
-* @file: CSerialPort.h 
-* @brief: Header file for CSerialPort.cpp
+* @file: CSerialCom.h 
+* @brief: Header file for CSerialCom.cpp
 * @author: Liming Chen
 * @email: chen3496@purdue.edu
 * @version: V1.0
@@ -22,7 +22,7 @@
 
 using namespace std;
 
-class CSerialPort
+class CSerialCom
 {
 private:
     LPSTR m_portID;
@@ -34,25 +34,20 @@ private:
     volatile bool m_isOpen;
     HANDLE m_thread;
 
+public:
 	DWORD m_validReadBytes;
 	BYTE m_readBuf[4096];
 
 // constructor and destructor
 public:
-    CSerialPort(int portID);
-    ~CSerialPort();
+    CSerialCom(int portID);
+    ~CSerialCom();
 
 public:
-    bool openPort(int baudRate, bool isSyncRead);
-    void closePort();
-
+    bool open(int baudRate);
+    void close();
     // write
-    bool writePort(LPBYTE buf, DWORD cmdLen, DWORD* wrLen);
-
+    DWORD write(LPBYTE buf, DWORD cmdLen);
 	// sync read
-	bool readPortSync(LPBYTE buf, DWORD cmdLen, DWORD* rdLen);
-
-    // async read thread
-    static unsigned int __stdcall recv(void *);
-	int getReadBuf(BYTE* readData);
+	DWORD read(LPBYTE buf, DWORD cmdLen);
 };
