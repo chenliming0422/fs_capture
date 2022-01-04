@@ -12,7 +12,7 @@
 * @history:
 ***********************************************************************************************/
 
-#include "include/CETLCtrl.h"
+#include "CETLCtrl.h"
 
 /*
 * @brief: constructor
@@ -92,6 +92,7 @@ bool CETLCtrl::disconnect()
 {
 	m_serialCom->close();
 	m_connect = false;
+	return true;
 }
 
 /*
@@ -121,11 +122,13 @@ bool CETLCtrl::setSinMode()
 		if (memcmp(recv, "MSA", 3) == 0)
 		{
 			m_sinMode = true;
+			cout << "function setSinMode(): success" << endl;
 			return true;
 		}
 		else
 		{
 			m_sinMode = false;
+			cout << "function setSinMode() : received a wrong response" << endl;
 			return false;
 		}
 	}
@@ -166,11 +169,12 @@ bool CETLCtrl::setCurrent(float current)
 		uint8_t recv[8];
 		if (0 != m_serialCom->read(recv, 7))
 		{
-			cout << "CRC error when set current" << endl;
+			cout << "function setCurrent() : CRC error when set current" << endl;
 			return false;
 		}
 		else
 		{
+			cout << "function setCurrent() : set current to " << current << "mA" << endl;
 			return true;
 		}
 	}
@@ -226,6 +230,7 @@ bool CETLCtrl::setMinMax(float upper, float lower)
 		std::copy(minCmd.begin(), minCmd.end(), pCommand);
 		m_serialCom->write(pCommand, minCmd.size());
 		delete[] pCommand;
+		cout << "function setMinMax() : set min to " << min << "mA" << endl;
 	}
 	else
 	{
@@ -239,6 +244,7 @@ bool CETLCtrl::setMinMax(float upper, float lower)
 		std::copy(maxCmd.begin(), maxCmd.end(), pCommand);
 		m_serialCom->write(pCommand, maxCmd.size());
 		delete[] pCommand;
+		cout << "function setMinMax() : set max to " << max << "mA" << endl;
 	}
 	else
 	{
@@ -276,6 +282,7 @@ bool CETLCtrl::setFreq(float freq)
 		std::copy(cmd.begin(), cmd.end(), pCommand);
 		m_serialCom->write(pCommand, cmd.size());
 		delete[] pCommand;
+		cout << "function setFreq() : set frequency to " << freq <<"Hz" << endl;
 	}
 	else
 	{

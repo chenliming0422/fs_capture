@@ -24,12 +24,24 @@
     <ClCompile Include="..\..\src\CSerialCom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\pointGreyCapture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\CCameraDriver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\include\CETLCtrl.h">
+    <ClInclude Include="..\..\src\CCameraDriver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\include\CSerialCom.h">
+    <ClInclude Include="..\..\src\CETLCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\CSerialCom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\pointGreyCapture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

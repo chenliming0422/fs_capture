@@ -48,7 +48,6 @@ public:
 	~CETLCtrl();
 
 private:
-	bool readLimit();
 	bool addCRC(vector<uint8_t>& cmd);
 	uint16_t computeCheckSum(vector<uint8_t>& cmd);
 	void generateTable();

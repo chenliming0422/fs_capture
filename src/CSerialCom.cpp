@@ -12,7 +12,7 @@
 * @history:
 ***********************************************************************************************/
 
-#include "include/CSerialCom.h"
+#include "CSerialCom.h"
 
 /*
 * @brief: constructor

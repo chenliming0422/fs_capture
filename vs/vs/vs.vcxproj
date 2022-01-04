@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\CCameraDriver.cpp" />
     <ClCompile Include="..\..\src\CETLCtrl.cpp" />
     <ClCompile Include="..\..\src\CSerialCom.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\pointGreyCapture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\include\CETLCtrl.h" />
-    <ClInclude Include="..\..\src\include\CSerialCom.h" />
+    <ClInclude Include="..\..\src\CCameraDriver.h" />
+    <ClInclude Include="..\..\src\CETLCtrl.h" />
+    <ClInclude Include="..\..\src\CSerialCom.h" />
+    <ClInclude Include="..\..\src\pointGreyCapture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
