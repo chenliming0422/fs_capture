@@ -175,6 +175,10 @@ DWORD CSerialCom::read(LPBYTE buf, DWORD cmdLen)
 			}
 		}
 	}
+	else
+	{
+		rdLen--;
+	}
 	PurgeComm(m_hCom, PURGE_RXABORT | PURGE_RXCLEAR);
 	return rdLen;
 }

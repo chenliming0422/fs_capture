@@ -153,7 +153,7 @@ bool CETLCtrl::setCurrent(float current)
 	}
 
 	// generate the command
-	vector<uint8_t> cmd = { 'A', 'W' };
+	vector<uint8_t> cmd = { 'A', 'w' };
 	int16_t setNumber = (int16_t)round((current / m_calibCurrent) * 4096);
 
 	cmd.push_back(static_cast<uint8_t>(setNumber >> 8));
