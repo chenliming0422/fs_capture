@@ -23,10 +23,14 @@ CETLCtrl::CETLCtrl(int portID, int type)
 	m_type = type;
 	m_portID = portID;
 	m_serialCom = new CSerialCom(portID);
-	m_baudRate = 115200;
+	if (type == EL_16_40_TC_VIS_5D)
+	{
+		m_baudRate = 115200;
+		m_calibCurrent = 292.84;
+	}
+
 	m_connect = false;
 	m_sinMode = false;
-	m_calibCurrent = 292.84;
 	generateTable();
 }
 
