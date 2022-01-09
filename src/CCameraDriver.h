@@ -43,5 +43,5 @@ private:
 public:
 	void initSystem(unsigned int cameraSerialNo, float frameRate, int frameNum, bool isHardwareTrigger);
 	int grabImageSet(float expTime);
-	void grabPos(float expTime, string folderDir, bool saveRawImage = false);
+	void grabPos(float expTime, string folderDir, bool saveRawImage = false, bool isLivePreview = true);
 };

@@ -157,7 +157,7 @@ bool CCameraDriver::saveRawImage(string folderDir)
 /*
 *
 */
-void CCameraDriver::grabPos(float expTime, string folderDir, bool isSaveRawImage)
+void CCameraDriver::grabPos(float expTime, string folderDir, bool isSaveRawImage, bool isLivePreview)
 {
 	if (!m_systemInit)
 	{
@@ -166,14 +166,22 @@ void CCameraDriver::grabPos(float expTime, string folderDir, bool isSaveRawImage
 	}
 
 	// turn on the camera based on camera serial number
-	m_grab.openCamera(m_cameraSerialNo);
+	bool cameraOpen = m_grab.openCamera(m_cameraSerialNo);
+	if (cameraOpen == false)
+	{
+		cout << "camera is not connected" << endl;
+		return;
+	}
 
 	// initialize camera
 	m_grab.initCamera(m_cameraRes.width, m_cameraRes.height, m_frameRate, expTime, m_isHardwareTrigger);
 	m_grab.startAcquisition();
 
-	string windowName = "Check Image Quality (ESC to quit)";
-	livePreview(windowName, expTime);
+	if (isLivePreview)
+	{
+		string windowName = "Check Image Quality (ESC to quit)";
+		livePreview(windowName, expTime);
+	}
 
 	// capture fringe images
 	int blackID = grabImageSet(expTime);

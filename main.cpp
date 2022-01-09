@@ -31,17 +31,17 @@ using namespace cv;
 
 int main()
 {
-	float current[] = { -130.00, -131.00, -132.00, -133.00, -134.00, -135.00,
-					    -136.00, -137.00, -138.00, -139.00, -140.00, -141.00 };
+	float current[] = {-130.00, -131.00, -132.00, -133.00, -134.00, -135.00, 
+		               -136.00, -137.00, -138.00, -139.00, -140.00, -141.00};
 
-	// connect camera ETL
+	// connect ETL
 	CETLCtrl etl_camera(5, EL_16_40_TC_VIS_5D);
 	etl_camera.connect();
 
-	// connect projector ETL
 	CETLCtrl etl_proj(4, EL_16_40_TC_VIS_5D);
 	etl_proj.connect();
 	etl_proj.setCurrent(26.53);
+
 
 	// init camera
 	unsigned int cameraSerialNo = 16238113;
@@ -70,11 +70,11 @@ int main()
 		if (_access(folderPose.c_str(), 0) == -1)
 		{
 			_mkdir(folderPose.c_str());
-		}
+		}	
 	}
 
 	// capture images
-	for (int i = 0; i < sizeof(current) / sizeof(float); i++)
+	for (int i = 0; i < sizeof(current)/sizeof(float); i++)
 	{
 		string currentName = to_string(current[i]);
 		string currentNameFix = currentName.substr(0, currentName.find(".") + 3);
@@ -85,16 +85,9 @@ int main()
 		}
 
 		etl_camera.setCurrent(current[i]);
-		if (i == 0)
-		{
-			camera.grabPos(expTime, currentDir, isSaveFringe);
-		}
-		else
-		{
-			camera.grabPos(expTime, currentDir, isSaveFringe, false);
-		}
-		
+		camera.grabPos(expTime, currentDir, isSaveFringe);
 	}
+
 
 	// close
 	etl_camera.disconnect();
